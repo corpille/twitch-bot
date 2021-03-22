@@ -1,4 +1,4 @@
-const translations = require('../translations.json');
+const translations = require('../assets/translations.json');
 
 exports.getTranslation = function (key, params = {}) {
 	const parts = key.split('.');

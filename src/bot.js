@@ -34,7 +34,7 @@ function onMessageHandler (target, context, msg, self) {
   // Remove whitespace from chat message
   msg = msg.trim().toLowerCase();
 
-  if (msg.startsWith(`@${BOT_USERNAME}`)) {
+  if (msg.indexOf(`@${BOT_USERNAME}`) !== -1) {
     const sender = {
       name: context['display-name'],
       mod: context.mod

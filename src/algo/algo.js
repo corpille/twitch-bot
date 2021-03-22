@@ -3,7 +3,7 @@ const checks = require('./checks');
 const utils = require('../utils');
 
 const questionMapper = ['AreYouOk', 'Choice', 'FavoriteColor', 'GoodSituation'];
-const affirmationMapper = ['Hello'];
+const affirmationMapper = ['Hello', 'Thanks'];
 
 const defaultAnswers = [
   'Oui',

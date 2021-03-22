@@ -5,8 +5,13 @@ exports.isHello = function (msg) {
   return utils.hasKeyword(msg, keywords);
 }
 
+exports.isThanks = function (msg) {  
+  const keywords = ['merci', 'thanks', 'thx'];
+  return utils.hasKeyword(msg, keywords);
+}
+
 exports.isAreYouOk = function (msg) {
-  const keywords = ['ça va', 'ca va', 'sa va'];
+  const keywords = ['ça va', 'ca va', 'sa va', 'va tu', 'vas tu', 'vas-tu', 'va-tu'];
   return utils.hasKeyword(msg, keywords);
 }
 

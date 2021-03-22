@@ -6,7 +6,13 @@ exports.getHelloAnswer = function (sender) {
   const time = moment().tz('Europe/Paris');
   const greetingTime = utils.getGreetingTime(time);
   return utils.getTranslation(`hello.${greetingTime}`, {
-    name: sender.username
+    name: `@${sender.username}`
+  });
+}
+
+exports.getThanksAnswer = function (sender) {
+  return utils.getTranslation(`thanks`, {
+    name:  `@${sender.username}`
   });
 }
 
