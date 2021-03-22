@@ -1,5 +1,5 @@
 const moment = require('moment-timezone');
-const utils = require('../utils');
+const Utils = require('../utils');
 moment.locale('fr')
 
 class Answers {
@@ -20,23 +20,23 @@ class Answers {
   }
 
   getDefaultAnswer() {
-    return utils.getTranslation(`defaultAnswers.${utils.randFromArray(this.defaultAnswers)}`);
+    return Utils.getTranslation(`defaultAnswers.${Utils.randFromArray(this.defaultAnswers)}`);
   }
 
   getUnknownAnswer() {
-    return utils.getTranslation('unknownAnswer');
+    return Utils.getTranslation('unknownAnswer');
   }
 
   getHelloAnswer(sender) {
     const time = moment().tz('Europe/Paris');
-    const greetingTime = utils.getGreetingTime(time);
-    return utils.getTranslation(`hello.${greetingTime}`, {
+    const greetingTime = Utils.getGreetingTime(time);
+    return Utils.getTranslation(`hello.${greetingTime}`, {
       name: `@${sender.username}`
     });
   }
 
   getThanksAnswer(sender) {
-    return utils.getTranslation(`thanks`, {
+    return Utils.getTranslation(`thanks`, {
       name:  `@${sender.username}`
     });
   }
@@ -44,7 +44,7 @@ class Answers {
   getAreYouOkAnswer() {
     const date = moment();
     const expression = ['imothep', 'alright', 'nickel', 'likeA', 'toTheMax']
-    return utils.getTranslation(`areYouOk.${utils.randFromArray(expression)}`, {
+    return Utils.getTranslation(`areYouOk.${Utils.randFromArray(expression)}`, {
       day:  date.format('dddd')
     });
   }
@@ -55,24 +55,24 @@ class Answers {
     const orIndex = parts.indexOf('ou');
     const choices = [msg.split(' ou ')[1]];
     const preposition = ['l\'', 'le', 'la', 'les', 'un', 'une', 'des'];
-    const index = utils.findFirsKeywordIndex(parts, preposition);
+    const index = Utils.findFirsKeywordIndex(parts, preposition);
     if (index !== -1) {
       choices.push(msg.slice(index, msg.indexOf(' ou ')).trim());
     } else {
       choices.push(parts[orIndex - 1]);
     }
     
-    return utils.getTranslation(`choices.${utils.randFromArray(expression)}`, {
-      answer: utils.randFromArray(choices)
+    return Utils.getTranslation(`choices.${Utils.randFromArray(expression)}`, {
+      answer: Utils.randFromArray(choices)
     });
   }
 
   getFavoriteColorAnswer(sender, msg) {
-    return  utils.getTranslation(`favoriteColor.${sender.username === 'nylwosh' ? 'nylwosh' : 'default'}`);
+    return  Utils.getTranslation(`favoriteColor.${sender.username === 'nylwosh' ? 'nylwosh' : 'default'}`);
   }
 
   getGoodSituationAnswer(sender, msg) {
-    return utils.getTranslation('GoodSituation');
+    return Utils.getTranslation('GoodSituation');
   }
 
 }

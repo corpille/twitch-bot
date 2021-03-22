@@ -1,6 +1,6 @@
 const Answers = require('./answers');
 const Checks = require('./checks');
-const utils = require('../utils');
+const Utils = require('../utils');
 const config = require('../config');
 
 const questionMapper = ['AreYouOk', 'Choice', 'FavoriteColor', 'GoodSituation'];
@@ -16,10 +16,9 @@ function findAnAnswer(msg, sender) {
   if (!entry) {
     answer = msgIsAQuestion ? Answers.getDefaultAnswer() : Answers.getUnknownAnswer();
   } else {
-    console.log(entry);
-    answer = Answers.getHelloAnswer(entry, msg, sender);
+    answer = Answers.getAnswer(entry, msg, sender);
   }
-  return utils.capitalize(answer);
+  return Utils.capitalize(answer);
 }
 
 function isAQuestion(msg) {
@@ -27,7 +26,8 @@ function isAQuestion(msg) {
 }
 
 function executeCommand(msg) {
-  return 
+  const answser =  Utils.getTranslation(`commands.${msg}`);
+  return answser ? answser : Utils.getTranslation('noCommand');
 }
 
 function messageHandler(msg, sender) {

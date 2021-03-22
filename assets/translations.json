@@ -14,6 +14,7 @@
     "definiltelyNot": "Définitivement pas"
   },
   "unknownAnswer": "Désolé, je n'ai pas compris",
+  "noCommand": "Désolé, je ne connais pas cette commande",
   "hello": {
     "morning": "Bon matin à toi $name",
     "afternoon": "Bonjour à toi $name",

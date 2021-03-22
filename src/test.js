@@ -1,5 +1,5 @@
 const readline = require('readline');
-const bot = require('./algo/bot');
+const bot = require('./bot/bot');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,

@@ -1,5 +1,5 @@
 const tmi = require('tmi.js');
-const bot = require('./algo/bot.js');
+const bot = require('./bot/bot.js');
 const config = require('./config');
 
 // Define configuration options

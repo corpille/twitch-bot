@@ -1,4 +1,4 @@
-const utils = require('../utils');
+const Utils = require('../utils');
 
 class Checks {
 
@@ -8,21 +8,21 @@ class Checks {
   
   isHello(msg) {  
     const keywords = ['bonjour', 'bonsoir', 'hello', 'salut', 'hola', 'yo', 'yosh', 'wesh', 'heyo', 'heyou', 'hey'];
-    return utils.hasKeyword(msg, keywords);
+    return Utils.hasKeyword(msg, keywords);
   }
 
   isThanks(msg) {  
     const keywords = ['merci', 'thanks', 'thx'];
-    return utils.hasKeyword(msg, keywords);
+    return Utils.hasKeyword(msg, keywords);
   }
 
   isAreYouOk(msg) {
     const keywords = ['ça va', 'ca va', 'sa va', 'va tu', 'vas tu', 'vas-tu', 'va-tu'];
-    return utils.hasKeyword(msg, keywords);
+    return Utils.hasKeyword(msg, keywords);
   }
 
   isChoice(msg) {
-    return msg.indexOf(' ou ') !==  -1;
+    return msg.indexOf(' ou ') !== -1;
   }
 
   isFavoriteColor (msg) {
@@ -31,7 +31,8 @@ class Checks {
   }
 
   isGoodSituation (msg) {
-    return msg.indexOf('une bonne situation') !==  -1
+    return msg.indexOf('une bonne situation') !== -1;
   }
 }
+
 module.exports = new Checks();
