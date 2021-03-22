@@ -2,6 +2,18 @@
   "commands": {
     "discord": "Discord : https://discord.gg/jprB9h5Mtt"
   },
+  "defaultAnswers": {
+    "yes": "Oui",
+    "no": "Non",
+    "notSure": "Je ne suis pas sur",
+    "maybe": "Peut-être",
+    "iThink": "Je pense",
+    "iDontThink": "Je ne pense pas",
+    "absolutely": "Absolument",
+    "right": "Tout à fait",
+    "definiltelyNot": "Définitivement pas"
+  },
+  "unknownAnswer": "Désolé, je n'ai pas compris",
   "hello": {
     "morning": "Bon matin à toi $name",
     "afternoon": "Bonjour à toi $name",

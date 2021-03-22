@@ -1,29 +1,37 @@
 const utils = require('../utils');
 
-exports.isHello = function (msg) {  
-  const keywords = ['bonjour', 'bonsoir', 'hello', 'salut', 'hola', 'yo', 'yosh', 'wesh', 'heyo', 'heyou', 'hey'];
-  return utils.hasKeyword(msg, keywords);
-}
+class Checks {
 
-exports.isThanks = function (msg) {  
-  const keywords = ['merci', 'thanks', 'thx'];
-  return utils.hasKeyword(msg, keywords);
-}
+  checkByName(name, msg) {
+    return this[`is${name}`](msg);
+  }
+  
+  isHello(msg) {  
+    const keywords = ['bonjour', 'bonsoir', 'hello', 'salut', 'hola', 'yo', 'yosh', 'wesh', 'heyo', 'heyou', 'hey'];
+    return utils.hasKeyword(msg, keywords);
+  }
 
-exports.isAreYouOk = function (msg) {
-  const keywords = ['ça va', 'ca va', 'sa va', 'va tu', 'vas tu', 'vas-tu', 'va-tu'];
-  return utils.hasKeyword(msg, keywords);
-}
+  isThanks(msg) {  
+    const keywords = ['merci', 'thanks', 'thx'];
+    return utils.hasKeyword(msg, keywords);
+  }
 
-exports.isChoice = function (msg) {
-  return msg.indexOf(' ou ') !==  -1;
-}
+  isAreYouOk(msg) {
+    const keywords = ['ça va', 'ca va', 'sa va', 'va tu', 'vas tu', 'vas-tu', 'va-tu'];
+    return utils.hasKeyword(msg, keywords);
+  }
 
-exports.isFavoriteColor = function (msg) {
-  const regexp = /couleur pr[eé]f[ée]r[ée]([re]?)/g;
-  return regexp.test(msg);
-}
+  isChoice(msg) {
+    return msg.indexOf(' ou ') !==  -1;
+  }
 
-exports.isGoodSituation = function (msg) {
-  return msg.indexOf('une bonne situation') !==  -1
+  isFavoriteColor (msg) {
+    const regexp = /couleur pr[eé]f[ée]r[ée]([re]?)/g;
+    return regexp.test(msg);
+  }
+
+  isGoodSituation (msg) {
+    return msg.indexOf('une bonne situation') !==  -1
+  }
 }
+module.exports = new Checks();

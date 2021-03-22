@@ -1,21 +1,18 @@
-const BOT_USERNAME = 'picorebot'
-const CHANNEL_NAME = 'enraggeur'
-const OAUTH_TOKEN = 'oauth:1dgk5en2g2qumowdhscf4kij1ksbod';
-
 const tmi = require('tmi.js');
+const bot = require('./algo/bot.js');
+const config = require('./config');
 
 // Define configuration options
 const opts = {
   identity: {
-    username: BOT_USERNAME,
-    password: OAUTH_TOKEN
+    username: config.BOT_USERNAME,
+    password: config.OAUTH_TOKEN
   },
   channels: [
-    CHANNEL_NAME
+    config.CHANNEL_NAME
   ]
 };
 
-const algo = require('./algo/algo.js');
 
 // Create a client with our options
 const client = new tmi.client(opts);
@@ -31,18 +28,13 @@ client.connect();
 function onMessageHandler (target, context, msg, self) {
   if (self) { return; } // Ignore messages from the bot
 
-  // Remove whitespace from chat message
-  msg = msg.trim().toLowerCase();
-
-  if (msg.indexOf(`@${BOT_USERNAME}`) !== -1) {
-    const sender = {
-      name: context['display-name'],
-      mod: context.mod
-    };
-    const rawMsg = msg.replace(`@${BOT_USERNAME} `, '');
-    
-    const answer = algo.findAnAnswer(rawMsg, sender);
-    client.say(target, answer);
+  const sender = {
+    name: context['display-name'],
+    mod: context.mod
+  };
+  const answer = bot.messageHandler(msg, sender)
+  if (answer) {
+    client.say(target, commandResult);
   }
 }
 
